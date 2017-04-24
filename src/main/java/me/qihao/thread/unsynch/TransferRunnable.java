@@ -1,7 +1,5 @@
 package me.qihao.thread.unsynch;
 
-import java.util.Random;
-
 public class TransferRunnable implements Runnable{
 
     private Bank bank;
