@@ -1,0 +1,11 @@
+# eclipse ignore
+/target/
+*.settings/
+*.project
+*.classpath
+
+
+# intellij idea
+*.iml
+.idea/
+/bin/
