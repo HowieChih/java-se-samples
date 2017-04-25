@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 public class ListHepler<E> {
+
+    // 锁对象应该设置为final，如果非final对象做锁，实例对象有可能在同步代码达到之前会变化，造成同步失效，亲测（在同步代码到达之前修改掉list的实例对象）
     private final List<E> list;
     private final DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
