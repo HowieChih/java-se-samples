@@ -3,9 +3,16 @@ package me.qihao.thread.synch.intrinsic;
 public class TaskTest {
 
     public static void main(String[] args){
-        TaskService taskService_1 = new TaskService();
-        TaskService taskService_2 = new TaskService();
+        UserDefinedLock userDefinedLock = new UserDefinedLock();
+        TaskService taskService_1 = new TaskService(userDefinedLock);
+        // TaskService taskService_2 = new TaskService();
+        new Thread(new TaskRunnable(taskService_1, "before")).start();
         new Thread(new TaskRunnable(taskService_1, "do")).start();
-        new Thread(new TaskRunnable(taskService_2, "before")).start();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        userDefinedLock.doOwnTask();
     }
 }

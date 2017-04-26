@@ -23,7 +23,7 @@ public class ListHepler<E> {
 
         // update: 上述思考过程结论不太对，使用list对象做锁，可以做到完全同步，即使其他线程有更改list的行为（即add方法也锁了）。
         // 可以将 list 改成 formatter 做锁来做测试，发现完成不了同步任务，但list就可以。
-        // 那 core Java为什么不推荐client-side locking?
+        // 后来观察发现 list 内部 add方法用的list本身做为锁，所以和client-side内部锁一样，可以完成同步任务。
         synchronized (list) {
             boolean absent = !list.contains(x);
             System.out.println(Thread.currentThread() + " addIfAbsent " + absent + " " + formatter.format(new Date()));
