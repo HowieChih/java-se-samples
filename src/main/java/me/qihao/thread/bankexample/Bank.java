@@ -1,8 +1,4 @@
-package me.qihao.thread.unsynch;
-
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+package me.qihao.thread.bankexample;
 
 public class Bank {
     private final double[] accounts;

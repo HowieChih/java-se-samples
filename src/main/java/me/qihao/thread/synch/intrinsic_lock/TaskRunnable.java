@@ -1,4 +1,4 @@
-package me.qihao.thread.synch.intrinsic;
+package me.qihao.thread.synch.intrinsic_lock;
 
 public class TaskRunnable implements Runnable{
 

@@ -1,7 +1,10 @@
-package me.qihao.thread.synch.intrinsic;
+package me.qihao.thread.synch.intrinsic_lock;
 
 public class TaskService {
 
+    /**
+     * 内部锁(instinsic lock)：Java中的每一个对象都有一个内部锁，利用synchronized来使用。
+     */
     private final byte[] byteLock = new byte[0];
     private final Object objectLock = new Object();
     private final UserDefinedLock userDefinedLock;

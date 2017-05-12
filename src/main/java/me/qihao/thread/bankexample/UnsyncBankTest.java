@@ -1,4 +1,4 @@
-package me.qihao.thread.unsynch;
+package me.qihao.thread.bankexample;
 
 public class UnsyncBankTest {
 
