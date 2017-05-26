@@ -11,10 +11,11 @@ public class BlockingQueueTest {
         final int SEARCH_THREADS = 100;
         BlockingQueue<File> queue = new ArrayBlockingQueue<>(FILE_QUEUE_SIZE);
 
-        FileEnumerationTask enumerator = new FileEnumerationTask(new File(""), queue);
+        FileEnumerationTask enumerator = new FileEnumerationTask(
+                new File("D:\\Workspace\\idea\\java-se-samples\\src\\main\\java\\me\\qihao\\thread"), queue);
         new Thread(enumerator).start();
         for (int i = 1; i <= SEARCH_THREADS; i++){
-            new Thread(new SearchTask(queue, "")).start();
+            new Thread(new SearchTask(queue, "file")).start();
         }
     }
 }
