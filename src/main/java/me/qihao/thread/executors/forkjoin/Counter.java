@@ -2,6 +2,8 @@ package me.qihao.thread.executors.forkjoin;
 
 import java.util.concurrent.RecursiveTask;
 
+// more details about fork-join
+// https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html
 public class Counter extends RecursiveTask<Integer> {
 
     public static final int THRESHOLD = 1000;
