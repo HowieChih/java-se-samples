@@ -25,6 +25,8 @@ public class EncodingTest {
         System.out.println(beyondCharLimitStr.length());
         // code point count 代码点数量（一个字符一个代码点）
         System.out.println(beyondCharLimitStr.codePointCount(0, beyondCharLimitStr.length()));
+
+        // https://docs.oracle.com/javase/tutorial/i18n/text/examples/StringConverter.java
     }
 
     static void printBytesToHex(byte[] bytes, PrintStream printStream) {
