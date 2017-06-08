@@ -26,12 +26,10 @@ public class EncodingTest {
         System.out.println(beyondCharLimitStr.length());
         // code point count 代码点数量（一个字符一个代码点）
         System.out.println(beyondCharLimitStr.codePointCount(0, beyondCharLimitStr.length()));
-        // 获得位置n的代码单元
+        // 获得下标位置1的代码单元
         System.out.println(Integer.toHexString(beyondCharLimitStr.charAt(1)));
-        // 获得第i个代码点
-        System.out.println(Integer.toHexString(beyondCharLimitStr.codePointAt(0)));
-        // 获取第i个代码点的下一个代码点
-        int nextCodePointIndex = beyondCharLimitStr.offsetByCodePoints(0, 1); // 从0开始，偏移量为一个代码点长度
+        // 获得第2个代码点
+        int nextCodePointIndex = beyondCharLimitStr.offsetByCodePoints(0, 1); // 从0开始，偏移量为1个代码点长度
         System.out.println(Integer.toHexString(beyondCharLimitStr.codePointAt(nextCodePointIndex)));
         // https://docs.oracle.com/javase/tutorial/i18n/text/examples/StringConverter.java
     }
