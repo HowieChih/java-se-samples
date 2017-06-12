@@ -19,8 +19,8 @@ public class EncodingTest {
         String decodedStr = new String(defaultEncodingBytes, Charset.forName("UTF-8"));
         System.out.println((int) decodedStr.toCharArray()[0]);
 
-        // 前两个代码单元为字符 U+1D56B，由两个代码单元表示，最后两个代码单元为emoji
-        String beyondCharLimitStr = "\uD835\uDD6B\uD835\uDD6C\uD83D\uDE02";
+        // 前两个代码单元为字符 U+1D56B，由两个代码单元表示，最后两个代码单元为emoji 😁
+        String beyondCharLimitStr = "\uD835\uDD6B\uD835\uDD6C\uD83D\uDE01";
         System.out.println(beyondCharLimitStr);
         // code unit length 代码单元长度（该字符由两个代码单元编码）
         System.out.println(beyondCharLimitStr.length());
