@@ -19,8 +19,8 @@ public class EncodingTest {
         String decodedStr = new String(defaultEncodingBytes, Charset.forName("UTF-8"));
         System.out.println((int) decodedStr.toCharArray()[0]);
 
-        // 字符 U+1D56B，由两个代码单元表示
-        String beyondCharLimitStr = "\uD835\uDD6B\uD835\uDD6C";
+        // 前两个代码单元为字符 U+1D56B，由两个代码单元表示，最后两个代码单元为emoji
+        String beyondCharLimitStr = "\uD835\uDD6B\uD835\uDD6C\uD83D\uDE02";
         System.out.println(beyondCharLimitStr);
         // code unit length 代码单元长度（该字符由两个代码单元编码）
         System.out.println(beyondCharLimitStr.length());
@@ -31,13 +31,12 @@ public class EncodingTest {
         // 获得第2个代码点
         int nextCodePointIndex = beyondCharLimitStr.offsetByCodePoints(0, 1); // 从0开始，偏移量为1个代码点长度
         System.out.println(Integer.toHexString(beyondCharLimitStr.codePointAt(nextCodePointIndex)));
-        // https://docs.oracle.com/javase/tutorial/i18n/text/examples/StringConverter.java
     }
 
     static void printBytesToHex(byte[] bytes, PrintStream printStream) {
         StringBuilder sb = new StringBuilder();
         for (byte b : bytes) {
-            sb.append(String.format("%02X ", b));
+            sb.append(String.format("%02X ", b)); // %X整数十六进制，02，最多两位，高位补0。
         }
         printStream.println(sb.toString());
     }
