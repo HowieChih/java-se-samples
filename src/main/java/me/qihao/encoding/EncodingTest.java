@@ -31,6 +31,12 @@ public class EncodingTest {
         // 获得第2个代码点
         int nextCodePointIndex = beyondCharLimitStr.offsetByCodePoints(0, 1); // 从0开始，偏移量为1个代码点长度
         System.out.println(Integer.toHexString(beyondCharLimitStr.codePointAt(nextCodePointIndex)));
+
+        // 观察 中 字，从 utf-8编码到 iso-8859-1 解码，再利用iso-8859-1编码到utf-8解码的过程
+        String encodeWithISO = new String("中".getBytes(Charset.forName("utf-8")), Charset.forName("iso-8859-1"));
+        System.out.println(encodeWithISO);
+        String decodeWithISO = new String(encodeWithISO.getBytes(Charset.forName("iso-8859-1")), Charset.forName("utf-8"));
+        System.out.println(decodeWithISO);
     }
 
     static void printBytesToHex(byte[] bytes, PrintStream printStream) {
