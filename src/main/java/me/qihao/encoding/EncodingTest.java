@@ -37,6 +37,11 @@ public class EncodingTest {
         System.out.println(encodeWithISO);
         String decodeWithISO = new String(encodeWithISO.getBytes(Charset.forName("iso-8859-1")), Charset.forName("utf-8"));
         System.out.println(decodeWithISO);
+        // 要将下面直接利用iso解码utf-16内部存储的情况和上面利用iso作为中间编码，先解码，再编码的情况做区分。
+        // 下面这种情况会导致中这个字符的3个存储字节转为一个iso字符，而不是三个，由于iso编码表中找不到3个字节对应数值的解码值，所以会得到一个question mark.
+        byte[] t = "中".getBytes(Charset.forName("ISO-8859-1"));
+        String recv = new String(t, Charset.forName("ISO-8859-1"));
+        System.out.println(recv);
     }
 
     static void printBytesToHex(byte[] bytes, PrintStream printStream) {
