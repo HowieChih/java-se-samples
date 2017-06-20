@@ -10,7 +10,8 @@ public class GenericClassTest {
         String[] words = {"Mary", "had", "a", "little", "lamb"};
         Pair<String> mm = ArrayAlg.minmax(words);
         System.out.printf("min: %s max: %s \n", mm.getFirst(), mm.getSecond());
-        System.out.println(ArrayAlg.getT("generic method"));
+        System.out.println(ArrayAlg.getT(100));
+        System.out.println(ArrayAlg.getDefaultVal());
     }
 }
 
@@ -39,5 +40,9 @@ class ArrayAlg {
 
     public static <T> T getT(T t) {
         return t;
+    }
+
+    public static <T> String getDefaultVal() {
+        return "default";
     }
 }
