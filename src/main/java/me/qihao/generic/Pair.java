@@ -1,4 +1,4 @@
-package me.qihao.generic.genericclass;
+package me.qihao.generic;
 
 /**
  * 定义简单泛型类

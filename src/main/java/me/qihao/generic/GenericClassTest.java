@@ -1,4 +1,4 @@
-package me.qihao.generic.genericclass;
+package me.qihao.generic;
 
 /**
  * @author qihao
@@ -10,8 +10,6 @@ public class GenericClassTest {
         String[] words = {"Mary", "had", "a", "little", "lamb"};
         Pair<String> mm = ArrayAlg.minmax(words);
         System.out.printf("min: %s max: %s \n", mm.getFirst(), mm.getSecond());
-        System.out.println(ArrayAlg.getT(100));
-        System.out.println(ArrayAlg.getDefaultVal());
     }
 }
 
@@ -21,7 +19,7 @@ class ArrayAlg {
      * Gets the minimum and maximum of an array of strings
      *
      * @param array an array of strings
-     * @return a pari with the min and max value, or null if array is null or empty
+     * @return a pair with the min and max value, or null if array is null or empty
      */
     public static Pair<String> minmax(String[] array) {
         if (array == null || array.length == 0) {
@@ -36,13 +34,5 @@ class ArrayAlg {
             }
         }
         return new Pair<>(min, max);
-    }
-
-    public static <T> T getT(T t) {
-        return t;
-    }
-
-    public static <T> String getDefaultVal() {
-        return "default";
     }
 }
