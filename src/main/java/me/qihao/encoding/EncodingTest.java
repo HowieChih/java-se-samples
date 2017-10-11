@@ -45,6 +45,7 @@ public class EncodingTest {
     }
 
     static void printBytesToHex(byte[] bytes, PrintStream printStream) {
+        printStream.println(bytes.length);
         StringBuilder sb = new StringBuilder();
         for (byte b : bytes) {
             sb.append(String.format("%02X ", b)); // %X整数十六进制，02，最多两位，高位补0。
