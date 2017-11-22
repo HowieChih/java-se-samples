@@ -6,9 +6,19 @@ import java.util.List;
 public class TryCatchBlock {
 
     public static void main(String[] args) {
-        System.out.println(getNum());
-        System.out.println(getNumWithFinally());
-        System.out.println(getList());
+        // System.out.println(getNum());
+        // System.out.println(getNumWithFinally());
+        // System.out.println(getList());
+        afterCatch();
+    }
+
+    public static void afterCatch() {
+        try {
+            int x = Integer.parseInt("xx");
+        } catch (Exception e) {
+            // swallow e
+        }
+        System.out.println("after catch");
     }
 
     public static int getNum() {
