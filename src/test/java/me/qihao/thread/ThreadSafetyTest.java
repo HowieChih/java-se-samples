@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author qihao
  */
-public class TestThreadSafety {
+public class ThreadSafetyTest {
 
     @Test
     public void addBooks() {
