@@ -4,6 +4,12 @@ import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
+/**
+ * A Java NIO Pipe is a one-way data connection between two threads. <br/>
+ * A Pipe has a source channel and a sink channel. <br/>
+ * You write data to the sink channel. This data can then be read from the source channel.
+ *
+ */
 public class PipedStream {
 
     public static void main(String[] args) throws IOException {
