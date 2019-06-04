@@ -200,7 +200,32 @@ public class StreamReadExample {
         }
     }
 
-    public static void main(String[] args) {
-        testBatchUpdateWithStatement();
+    public static void useCursorFetch() {
+        Properties properties = new Properties();
+        properties.setProperty("user", "root");
+        properties.setProperty("password", "123456");
+        properties.setProperty("useSSL", "false");
+        properties.setProperty("zeroDateTimeBehavior", "round");
+        properties.setProperty("autoReconnect", "true");
+        properties.setProperty("serverTimezone", "PRC");
+        properties.setProperty("profileSQL", "true");
+        properties.setProperty("useCursorFetch", "true");
+
+        try {
+            Connection conn = DriverManager.getConnection(url, properties);
+            conn.setAutoCommit(false);
+            PreparedStatement ps = conn.prepareStatement("select * from user where no =9");
+            ps.setFetchSize(2);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                System.out.print(rs.getObject(1) + "|");
+                System.out.print(rs.getObject(2) + "|");
+                System.out.print(rs.getObject(3) + "\r\n");
+            }
+            conn.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
