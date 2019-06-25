@@ -16,6 +16,10 @@ public class VolatileTest {
     // 去掉 volatile 后，ChangeListener 里面的 run 方法获取到的 MY_INT 就一直是 0
     // 需要注意的是 volatile 只保证了内存的可见性，不保证原子性
     // 因为锁同步既保证了可见性，又保证了原子性，所以可以通过去掉 volatile 关键字，同时给 ChangeListener local_value != MY_INT 加锁来同样保证可见性
+
+    // 网上有人讲 https://docs.oracle.com/javase/tutorial/essential/concurrency/atomic.html 文章里面提到了volatile 能保证原子性，
+    // 原文是：Reads and writes are atomic for all variables declared volatile (including long and double variables).
+    // 注意 reads and writes 根据前后文的意思是只有对变量简单的读写才提供了原子性，也就是只有set get而已。
     private static volatile int MY_INT = 0;
 
     public static void main(String[] args) {
