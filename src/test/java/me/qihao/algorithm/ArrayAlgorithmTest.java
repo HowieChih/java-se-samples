@@ -18,7 +18,18 @@ public class ArrayAlgorithmTest {
 
     @Test
     public void findMaxDiffWithOnceLoop() {
-        Integer[] array = {80, 100, -1, 10};
+        Integer[] array = {4, 9, 2, 2, -1, 8};
         ArrayAlgorithm.findMaxDiffWithOnceLoop(array);
+    }
+
+    @Test
+    public void testStr() {
+        String original = "jladfjjefieuhafaskdfasdhjkfb";
+        char[] toMatchChars = "jjkkz".toCharArray();
+        StringBuilder regex = new StringBuilder("[a-z]*");
+        for (char toMatchChar : toMatchChars) {
+            regex.append(toMatchChar).append("[a-z]*");
+        }
+        System.out.println(original.matches(regex.toString()));
     }
 }

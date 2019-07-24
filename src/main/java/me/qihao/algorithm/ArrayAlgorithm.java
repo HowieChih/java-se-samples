@@ -31,18 +31,14 @@ public class ArrayAlgorithm {
             return;
         }
         int min = Math.min(array[0], array[1]);
-        int maxDifference = array[1] - array[0];
-        int minuend = array[1], subtrahend = array[0];
-        for (int i = 2; i < length; i++) {
-            if (array[i] - min > maxDifference) {
-                maxDifference = array[i] - min;
-                minuend = array[i];
-                subtrahend = min;
-            }
-            if (array[i] < min) {
-                min = array[i];
-            }
+        int max = Math.max(array[0], array[1]);
+        int diff = max - min;
+        for (int k = 2; k < length; k++) {
+            max = array[k] - max > 0 ? array[k] : max;
+            min = array[k] - min < 0 ? array[k] : min;
+            diff = max - min;
         }
-        System.out.printf("minuend: %d, subtrahend: %d, maxDiff: %d \r\n", minuend, subtrahend, maxDifference);
+
+        System.out.printf("minuend: %d, subtrahend: %d, maxDiff: %d \r\n", max, min, diff);
     }
 }
