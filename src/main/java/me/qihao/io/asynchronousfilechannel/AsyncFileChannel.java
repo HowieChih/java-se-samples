@@ -12,7 +12,7 @@ import java.util.concurrent.Future;
 public class AsyncFileChannel {
 
     public static void main(String[] args) {
-        Path path = Paths.get("/Users", "chih", "mbox");
+        Path path = Paths.get("", "", "");
         try {
             // readViaFuture(path);
             readViaCompletionHandler(path);
@@ -39,11 +39,13 @@ public class AsyncFileChannel {
     }
 
     public static void readViaCompletionHandler(Path path) throws IOException {
+        Thread mainThread = Thread.currentThread();
+
         // 会新开一个默认线程池
         AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ);
 
         // 同样只能读到10个字节
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer buffer = ByteBuffer.allocate(10);
         long position = 0;
 
         fileChannel.read(buffer, position, buffer, new CompletionHandler<Integer, ByteBuffer>() {
@@ -59,20 +61,25 @@ public class AsyncFileChannel {
                 attachment.get(data);
                 System.out.println(new String(data));
                 attachment.clear();
+
+                // 强制结束主线程的join
+                mainThread.interrupt();
             }
 
             @Override
             public void failed(Throwable exc, ByteBuffer attachment) {
-
+                mainThread.interrupt();
             }
         });
 
-        // why?
+        // 因为fileChannel、byteBuffer等都是在主线程中声明的，所以在fileChannel.read结束前，主线程不能结束
         try {
-            System.out.println(Thread.currentThread().getName());
-            Thread.sleep(100);
+            // 这个地方更好的做法应该是用fileChannel用的线程池里面的线程join（waits for this thread to die）
+            mainThread.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("main thread terminated");
+        } finally {
+            fileChannel.close();
         }
     }
 }
