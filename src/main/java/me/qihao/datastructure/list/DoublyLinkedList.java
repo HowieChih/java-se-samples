@@ -1,4 +1,4 @@
-package me.qihao.algorithm.list;
+package me.qihao.datastructure.list;
 
 public class DoublyLinkedList<E> {
 
