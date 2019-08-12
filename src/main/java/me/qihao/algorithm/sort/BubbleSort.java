@@ -3,7 +3,7 @@ package me.qihao.algorithm.sort;
 import java.util.Arrays;
 
 /**
- * 冒泡排序
+ * 冒泡排序，将相邻两个位置的元素进行大小比较，将大的一个放在小的一个后面，重复多次。
  */
 public class BubbleSort {
 
