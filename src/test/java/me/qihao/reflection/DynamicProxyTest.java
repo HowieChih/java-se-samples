@@ -11,7 +11,7 @@ public class DynamicProxyTest {
     public void testProxy() {
         IUserDao target = new UserDao();
         IUserDao proxy = (IUserDao) new ProxyFactory(target).getProxyInstance();
-        System.out.println(proxy.getClass());
+        System.out.println("proxy class in test: " + proxy.getClass());
         proxy.save();
     }
 }
